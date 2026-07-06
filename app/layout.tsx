@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import {
-  Fraunces,
-  Public_Sans,
-  JetBrains_Mono,
-  Noto_Sans,
-  Playfair_Display,
-} from "next/font/google";
+import { Fraunces, Public_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const playfairDisplayHeading = Playfair_Display({
+const jetBrains = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-heading",
+  variable: "--font-mono",
 });
-const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-serif" });
+const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-heading" });
 const publicSans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
@@ -31,12 +25,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(
-        fraunces.variable,
-        "font-sans",
-        publicSans.variable,
-        playfairDisplayHeading.variable,
-      )}
+      className={cn(fraunces.variable, jetBrains.variable, publicSans.variable)}
     >
       <body className="min-h-full flex flex-col">
         <Header />

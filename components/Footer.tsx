@@ -42,7 +42,7 @@ export default function Footer() {
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
         </a>
-        <span className="font-serif text-(--color-stone1)">© 2026</span>
+        <span className="font-serif text-(--stone1)">© 2026</span>
       </div>
     </footer>
   );
