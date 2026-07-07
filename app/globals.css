@@ -155,8 +155,7 @@
   margin: 0 auto;
 }
 
-.heading1 {
-  font-size: 64px;
+.heading {
   font-family: var(--font-heading);
   font-weight: 600;
   color: var(--ink1);
@@ -175,14 +174,17 @@
 
 p {
   font-family: var(--font-sans);
+  font-weight: 200;
   color: var(--ink1);
   letter-spacing: 0.06em;
+  line-height: 2;
 }
 
 .primaryButton {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 193px;
   padding: 16px 26px;
   color: var(--parchment);
   background-color: var(--action);
