@@ -20,11 +20,11 @@ export default function NewsletterSignup() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your email"
-        className="border border-[var(--stone1)] bg-transparent px-3 py-2 text-sm rounded-l-[var(--radius)]"
+        className="border border-(--stone1) bg-transparent px-3 py-2 text-sm rounded-l-(--radius)"
       />
       <button
         type="submit"
-        className="bg-[var(--moss)] text-[var(--parchment)] px-4 py-2 text-sm rounded-r-[var(--radius)]"
+        className="bg-(--moss) text-background px-4 py-2 text-sm rounded-r-(--radius)"
       >
         Join
       </button>

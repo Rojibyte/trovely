@@ -3,7 +3,7 @@ export default function ProductSpotlight() {
     <section className="border-y border-(--stone3)">
       <div className="grid grid-cols-2">
         <div className="bg-(--stone3)" />
-        <div className="flex flex-col justify-center items-end py-14 pl-16.25 pl-8 mr-auto max-w-180 gap-9">
+        <div className="flex flex-col justify-center items-end py-14 pl-16.25 mr-auto max-w-180 gap-9">
           <span className="subTitle text-right">Catalog favourite</span>
           <h2 className="heading text-[48px] text-right">
             Stoneware pitcher, hand-thrown

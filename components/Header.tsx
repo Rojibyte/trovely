@@ -1,12 +1,15 @@
 import Container from "./Container";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <Container>
       <header className="py-8 flex justify-between">
-        <h1 className="font-heading text-[32px] tracking-[0.06em]">Trovely</h1>
+        <h1 className="font-heading text-[32px] tracking-[0.06em]">
+          <Link href="/">Trovely</Link>
+        </h1>
         <nav className="flex justify-evenly items-center gap-10">
-          <a href="http://">Shop</a>
+          <Link href="/shop">Shop</Link>
           <a href="http://">About</a>
           <a href="http://">Contact</a>
           <button>
