@@ -1,26 +1,40 @@
 "use client";
 
+import { useState } from "react";
 import { Product } from "@/lib/generated/prisma/client";
+import { FilterOptions } from "@/lib/filterOptions";
 import ProductFilters from "./ProductFilters";
 import ProductCard from "./ProductCard";
-import { useState } from "react";
 
 type SerializedProducts = Omit<Product, "price"> & { price: number };
+type ActiveFilters = Record<string, string[]>;
 // ^ singular — one product's shape
 
 interface ProductGridProps {
   products: SerializedProducts[];
+  filterOptions: FilterOptions;
 }
 
-export default function ProductGrid({ products }: ProductGridProps) {
+export default function ProductGrid({
+  products,
+  filterOptions,
+}: ProductGridProps) {
   const [sortBy, setSortBy] = useState("");
-  const [activeCategories, setActiveCategories] = useState([]);
-  const [activeMaterial, setActiveMaterial] = useState("");
-  const [activePriceRange, setActivePriceRange] = useState("");
+  const [activeFilters, setActiveFilters] = useState<ActiveFilters>({});
 
   const onSortChange = (newSortValue: string) => {
     setSortBy(newSortValue);
   };
+
+  const onFilterChange = (groupName: string, value: string, checked: boolean) => {
+  setActiveFilters((prev) => {
+    const currentGroup = prev[groupName] ?? [];
+    const updatedGroup = checked
+      ? [...currentGroup, value]
+      : currentGroup.filter((v) => v !== value);
+    return { ...prev, [groupName]: updatedGroup };
+  });
+};
 
   const sortedProducts = products.toSorted((a, b) => {
     if (sortBy === "priceAsce") {
@@ -51,7 +65,12 @@ export default function ProductGrid({ products }: ProductGridProps) {
         <div>
           <h3 className="font-heading text-[32px]">Shop All</h3>
         </div>
-        <ProductFilters products={products} onSortChange={onSortChange} />
+        <ProductFilters
+          products={products}
+          onSortChange={onSortChange}
+          onFilterChecked={onFilterChecked}
+          filterOptions={filterOptions}
+        />
       </div>
 
       {products.length <= 0 ? (

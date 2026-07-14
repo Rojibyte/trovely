@@ -1,9 +1,17 @@
 import { Product } from "./generated/prisma/client";
 
-export async function getFilterOptions(products: Product[]) {
+export function getFilterOptions(products: Product[]) {
   return {
-    Category: [...new Set(products.map((p) => p.category))],
-    Materials: [...new Set(products.map((p) => p.material))],
+    Category: [...new Set(products.map((p) => p.category))].map((category) => ({
+      label: category.charAt(0).toUpperCase() + category.slice(1).toLowerCase(),
+      value: category.toLowerCase().replace(/\s/g, ""),
+    })),
+    Materials: [...new Set(products.map((p) => p.material))].map(
+      (material) => ({
+        label: material,
+        value: material.toLowerCase().replace(/[\s,-]/g, ""),
+      }),
+    ),
     Price: [
       {
         label: "Under 30$",
@@ -18,5 +26,7 @@ export async function getFilterOptions(products: Product[]) {
         value: "high",
       },
     ],
-  };
+  } as const;
 }
+
+export type FilterOptions = ReturnType<typeof getFilterOptions>;

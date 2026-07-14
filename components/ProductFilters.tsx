@@ -18,18 +18,23 @@ import {
   FieldSet,
 } from "@/components/ui/field";
 import { sortOptions } from "@/lib/sortOptions";
+import { FilterOptions } from "@/lib/filterOptions";
 
 type SerializedProducts = Omit<Product, "price"> & { price: number };
 // ^ singular — one product's shape
 
 interface ProductFilterProps {
   products: SerializedProducts[];
+  filterOptions: FilterOptions;
   onSortChange: (sortBy: string) => void;
+  onFilterChecked: (filterBy: string) => void;
 }
 
 export default function ProductFilters({
   products,
+  filterOptions,
   onSortChange,
+  onFilterChecked,
 }: ProductFilterProps) {
   return (
     <>
@@ -70,67 +75,36 @@ export default function ProductFilters({
           </Select>
         </div>
       </div>
-      <div>
-        <FieldSet>
-          <FieldLegend
-            variant="label"
-            className="font-heading text-(--ink1) text-3xl leading-none tracking-[0.06em]"
+      <FieldSet className="flex flex-row w-fit">
+        <FieldLegend
+          variant="label"
+          className="font-heading text-(--ink1) text-3xl leading-none tracking-[0.06em]"
+        >
+          Filter by:
+        </FieldLegend>
+        {Object.entries(filterOptions).map(([groupName, option]) => (
+          <FieldGroup
+            key={groupName}
+            className={`${groupName === "Materials" ? "w-55" : "w-30"} gap-3`}
           >
-            Filter by:
-          </FieldLegend>
-          <FieldGroup className="gap-3">
-            <Field orientation="horizontal">
-              <Checkbox
-                id="filter-category-ceramics"
-                name="filter-category-ceramics"
-                className="border-(--ink1)"
-              />
-              <FieldLabel
-                htmlFor="filter-category-ceramics"
-                className="font-sans"
-              >
-                Ceramics
-              </FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox
-                id="filter-category-textiles"
-                name="filter-category-textiles"
-                className="border-(--ink1)"
-              />
-              <FieldLabel
-                htmlFor="filter-category-textiles"
-                className="font-sans"
-              >
-                Textiles
-              </FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox
-                id="filter-category-home"
-                name="filter-category-home"
-                className="border-(--ink1)"
-              />
-              <FieldLabel htmlFor="filter-category-home" className="font-sans">
-                Home
-              </FieldLabel>
-            </Field>
-            <Field orientation="horizontal">
-              <Checkbox
-                id="filter-category-garden"
-                name="filter-category-garden"
-                className="border-(--ink1)"
-              />
-              <FieldLabel
-                htmlFor="filter-category-garden"
-                className="font-sans"
-              >
-                Garden
-              </FieldLabel>
-            </Field>
+            {option.map((opt, index) => (
+              <Field key={index} orientation="horizontal">
+                <Checkbox
+                  id={`${opt.value}`}
+                  name={`filter-category-${opt.value}`}
+                  className="border-(--ink1)"
+                />
+                <FieldLabel
+                  htmlFor={`filter-category-${opt.value}`}
+                  className="font-sans"
+                >
+                  {opt.label}
+                </FieldLabel>
+              </Field>
+            ))}
           </FieldGroup>
-        </FieldSet>
-      </div>
+        ))}
+      </FieldSet>
     </>
   );
 }

@@ -9,7 +9,7 @@ export default async function Products() {
     ...product,
     price: Number(product.price),
   }));
-  const filterOptions = await getFilterOptions(products);
+  const filterOptions = getFilterOptions(products);
   return (
     <Container>
       <section className="py-20">
