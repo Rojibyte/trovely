@@ -21,6 +21,7 @@ export default function ProductGrid({
 }: ProductGridProps) {
   const [sortBy, setSortBy] = useState("");
   const [activeFilters, setActiveFilters] = useState<ActiveFilters>({});
+  const [updatedProducts, setUpdatedProducts] = useState<SerializedProducts>([]);
 
   const onSortChange = (newSortValue: string) => {
     setSortBy(newSortValue);
@@ -69,42 +70,27 @@ export default function ProductGrid({
     ),
   );
 
-  const getPriceRange = [
-    ...new Set(
-      activeFilters.Price?.map((p) => {
-        if (p === "under") {
-          return products.filter((prod) => prod.price < 30);
-        }
-        if (p === "middle") {
-          return products.filter(
-            (prod) => prod.price >= 30 && prod.price <= 60,
-          );
-        }
-        if (p === "high") {
-          return products.filter((prod) => prod.price > 60);
-        }
-      }),
-    ),
-  ];
-
   const filterByPrice = products.filter((prod) => {
-    activeFilters.Price?.map((p) => {
-      if (p === "under") {
-        return prod.price < 30;
-      }
-      if (p === "middle") {
-        return prod.price >= 30 && prod.price <= 60;
-      }
-      if (p === "high") {
-        return prod.price > 60;
-      }
-      return 0;
+    return activeFilters.Price?.some((range) => {
+      return prod.price < 30 && range === "under"
+        ? true
+        : prod.price >= 30 && prod.price <= 60 && range === "middle"
+          ? true
+          : prod.price >= 60 && range === "high"
+            ? true
+            : range === ""
+              ? true
+              : false;
     });
   });
 
-  const filteredProducts = [...filterByCategory, ...filterByMaterials];
+  const filteredProducts = [
+    ...filterByCategory,
+    ...filterByMaterials,
+    ...filterByPrice,
+  ];
 
-  console.log(filterByPrice);
+  console.log(filteredProducts);
 
   return (
     <>
