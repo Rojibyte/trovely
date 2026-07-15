@@ -27,14 +27,14 @@ interface ProductFilterProps {
   products: SerializedProducts[];
   filterOptions: FilterOptions;
   onSortChange: (sortBy: string) => void;
-  onFilterChecked: (filterBy: string) => void;
+  onFilterChange: (groupName: string, value: string, checked: boolean) => void;
 }
 
 export default function ProductFilters({
   products,
   filterOptions,
   onSortChange,
-  onFilterChecked,
+  onFilterChange,
 }: ProductFilterProps) {
   return (
     <>
@@ -93,6 +93,9 @@ export default function ProductFilters({
                   id={`${opt.value}`}
                   name={`filter-category-${opt.value}`}
                   className="border-(--ink1)"
+                  onCheckedChange={(checked) =>
+                    onFilterChange(groupName, opt.value, checked === true)
+                  }
                 />
                 <FieldLabel
                   htmlFor={`filter-category-${opt.value}`}

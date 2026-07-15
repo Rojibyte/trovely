@@ -26,15 +26,19 @@ export default function ProductGrid({
     setSortBy(newSortValue);
   };
 
-  const onFilterChange = (groupName: string, value: string, checked: boolean) => {
-  setActiveFilters((prev) => {
-    const currentGroup = prev[groupName] ?? [];
-    const updatedGroup = checked
-      ? [...currentGroup, value]
-      : currentGroup.filter((v) => v !== value);
-    return { ...prev, [groupName]: updatedGroup };
-  });
-};
+  const onFilterChange = (
+    groupName: string,
+    value: string,
+    checked: boolean,
+  ) => {
+    setActiveFilters((prev) => {
+      const currentGroup = prev[groupName] ?? [];
+      const updatedGroup = checked
+        ? [...currentGroup, value]
+        : currentGroup.filter((v) => v !== value);
+      return { ...prev, [groupName]: updatedGroup };
+    });
+  };
 
   const sortedProducts = products.toSorted((a, b) => {
     if (sortBy === "priceAsce") {
@@ -52,9 +56,55 @@ export default function ProductGrid({
     return 0;
   });
 
-  console.log(sortedProducts);
+  // console.log(sortedProducts);
+  console.log(activeFilters);
 
-  const filteredProducts = sortedProducts.toSorted();
+  const filterByCategory = products.filter((prod) =>
+    activeFilters.Category?.includes(prod.category.toLocaleLowerCase()),
+  );
+
+  const filterByMaterials = products.filter((prod) =>
+    activeFilters.Materials?.includes(
+      prod.material.toLowerCase().replace(/[\s,-]/g, ""),
+    ),
+  );
+
+  const getPriceRange = [
+    ...new Set(
+      activeFilters.Price?.map((p) => {
+        if (p === "under") {
+          return products.filter((prod) => prod.price < 30);
+        }
+        if (p === "middle") {
+          return products.filter(
+            (prod) => prod.price >= 30 && prod.price <= 60,
+          );
+        }
+        if (p === "high") {
+          return products.filter((prod) => prod.price > 60);
+        }
+      }),
+    ),
+  ];
+
+  const filterByPrice = products.filter((prod) => {
+    activeFilters.Price?.map((p) => {
+      if (p === "under") {
+        return prod.price < 30;
+      }
+      if (p === "middle") {
+        return prod.price >= 30 && prod.price <= 60;
+      }
+      if (p === "high") {
+        return prod.price > 60;
+      }
+      return 0;
+    });
+  });
+
+  const filteredProducts = [...filterByCategory, ...filterByMaterials];
+
+  console.log(filterByPrice);
 
   return (
     <>
@@ -68,7 +118,7 @@ export default function ProductGrid({
         <ProductFilters
           products={products}
           onSortChange={onSortChange}
-          onFilterChecked={onFilterChecked}
+          onFilterChange={onFilterChange}
           filterOptions={filterOptions}
         />
       </div>
