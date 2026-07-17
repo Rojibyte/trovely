@@ -21,7 +21,6 @@ export default function ProductGrid({
 }: ProductGridProps) {
   const [sortBy, setSortBy] = useState("");
   const [activeFilters, setActiveFilters] = useState<ActiveFilters>({});
-  const [updatedProducts, setUpdatedProducts] = useState<SerializedProducts>([]);
 
   const onSortChange = (newSortValue: string) => {
     setSortBy(newSortValue);
@@ -41,7 +40,31 @@ export default function ProductGrid({
     });
   };
 
-  const sortedProducts = products.toSorted((a, b) => {
+  const filteredProducts = products.filter((prod) => {
+    const matchesCategory = activeFilters.Category?.length
+      ? activeFilters.Category?.includes(prod.category.toLocaleLowerCase())
+      : true;
+    const matchesMaterials = activeFilters.Materials?.length
+      ? activeFilters.Materials?.includes(
+          prod.material.toLowerCase().replace(/[\s,-]/g, ""),
+        )
+      : true;
+    const matchesPrice = activeFilters.Price?.length
+      ? activeFilters.Price?.some((range) => {
+          return prod.price < 30 && range === "under"
+            ? true
+            : prod.price >= 30 && prod.price <= 60 && range === "middle"
+              ? true
+              : prod.price >= 60 && range === "high"
+                ? true
+                : false;
+        })
+      : true;
+
+    return matchesCategory && matchesMaterials && matchesPrice;
+  });
+
+  const sortedProducts = filteredProducts.toSorted((a, b) => {
     if (sortBy === "priceAsce") {
       return Number(a.price) - Number(b.price);
     }
@@ -56,41 +79,6 @@ export default function ProductGrid({
     }
     return 0;
   });
-
-  // console.log(sortedProducts);
-  console.log(activeFilters);
-
-  const filterByCategory = products.filter((prod) =>
-    activeFilters.Category?.includes(prod.category.toLocaleLowerCase()),
-  );
-
-  const filterByMaterials = products.filter((prod) =>
-    activeFilters.Materials?.includes(
-      prod.material.toLowerCase().replace(/[\s,-]/g, ""),
-    ),
-  );
-
-  const filterByPrice = products.filter((prod) => {
-    return activeFilters.Price?.some((range) => {
-      return prod.price < 30 && range === "under"
-        ? true
-        : prod.price >= 30 && prod.price <= 60 && range === "middle"
-          ? true
-          : prod.price >= 60 && range === "high"
-            ? true
-            : range === ""
-              ? true
-              : false;
-    });
-  });
-
-  const filteredProducts = [
-    ...filterByCategory,
-    ...filterByMaterials,
-    ...filterByPrice,
-  ];
-
-  console.log(filteredProducts);
 
   return (
     <>
@@ -109,7 +97,7 @@ export default function ProductGrid({
         />
       </div>
 
-      {products.length <= 0 ? (
+      {sortedProducts.length <= 0 ? (
         <div className="flex justify-center items-center gap-7.5 py-20 border-t border-(--stone3)">
           <span className="font-heading text-3xl">
             There are no Available Products for now.
@@ -117,7 +105,7 @@ export default function ProductGrid({
         </div>
       ) : (
         <div className="grid grid-cols-4 gap-7.5 pt-8 border-t border-(--stone3)">
-          {products.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard key={product.id} products={product} />
           ))}
         </div>

@@ -19,6 +19,12 @@ import {
 } from "@/components/ui/field";
 import { sortOptions } from "@/lib/sortOptions";
 import { FilterOptions } from "@/lib/filterOptions";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./ui/accordion";
 
 type SerializedProducts = Omit<Product, "price"> & { price: number };
 // ^ singular — one product's shape
@@ -38,13 +44,34 @@ export default function ProductFilters({
 }: ProductFilterProps) {
   return (
     <>
-      <div className="w-full flex justify-between items-center">
-        <button className="w-fit px-4 py-3 flex gap-4 bg-background border border-(--stone3) rounded-2xl cursor-pointer">
-          <span className="font-sans text-base font-extralight tracking-[0.06em]">
-            Filter
-          </span>
-          <Image src={filterIcon} alt="Filter Icon" width={18} height={18} />
-        </button>
+      <div className="w-full flex justify-between items-start">
+        <Accordion orientation="horizontal" multiple className="w-fit">
+          {Object.entries(filterOptions).map(([groupName, option]) => (
+            <AccordionItem key={groupName} value={groupName}>
+              <AccordionTrigger>{groupName}</AccordionTrigger>
+              <AccordionContent>
+                {option.map((opt, index) => (
+                  <Field key={index} orientation="horizontal">
+                    <Checkbox
+                      id={`${opt.value}`}
+                      name={`filter-category-${opt.value}`}
+                      className=""
+                      onCheckedChange={(checked) =>
+                        onFilterChange(groupName, opt.value, checked === true)
+                      }
+                    />
+                    <FieldLabel
+                      htmlFor={`filter-category-${opt.value}`}
+                      className="font-sans"
+                    >
+                      {opt.label}
+                    </FieldLabel>
+                  </Field>
+                ))}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
         <div className="flex justify-between items-center gap-8">
           <span className="font-mono text-base font-extralight tracking-[0.06em]">
             {products.length} products
@@ -75,39 +102,6 @@ export default function ProductFilters({
           </Select>
         </div>
       </div>
-      <FieldSet className="flex flex-row w-fit">
-        <FieldLegend
-          variant="label"
-          className="font-heading text-(--ink1) text-3xl leading-none tracking-[0.06em]"
-        >
-          Filter by:
-        </FieldLegend>
-        {Object.entries(filterOptions).map(([groupName, option]) => (
-          <FieldGroup
-            key={groupName}
-            className={`${groupName === "Materials" ? "w-55" : "w-30"} gap-3`}
-          >
-            {option.map((opt, index) => (
-              <Field key={index} orientation="horizontal">
-                <Checkbox
-                  id={`${opt.value}`}
-                  name={`filter-category-${opt.value}`}
-                  className="border-(--ink1)"
-                  onCheckedChange={(checked) =>
-                    onFilterChange(groupName, opt.value, checked === true)
-                  }
-                />
-                <FieldLabel
-                  htmlFor={`filter-category-${opt.value}`}
-                  className="font-sans"
-                >
-                  {opt.label}
-                </FieldLabel>
-              </Field>
-            ))}
-          </FieldGroup>
-        ))}
-      </FieldSet>
     </>
   );
 }
