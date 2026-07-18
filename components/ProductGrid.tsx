@@ -87,7 +87,7 @@ export default function ProductGrid({
           Home / Shop
         </span>
         <div>
-          <h3 className="font-heading text-[32px]">Shop All</h3>
+          <h3 className="font-heading text-[32px] mb-6">Shop All</h3>
         </div>
         <ProductFilters
           products={products}

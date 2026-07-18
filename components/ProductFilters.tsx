@@ -1,5 +1,3 @@
-import Image from "next/image";
-import filterIcon from "@/public/filter-icon.svg";
 import { Product } from "@/lib/generated/prisma/client";
 import {
   Select,
@@ -44,34 +42,39 @@ export default function ProductFilters({
 }: ProductFilterProps) {
   return (
     <>
-      <div className="w-full flex justify-between items-start">
-        <Accordion orientation="horizontal" multiple className="w-fit">
-          {Object.entries(filterOptions).map(([groupName, option]) => (
-            <AccordionItem key={groupName} value={groupName}>
-              <AccordionTrigger>{groupName}</AccordionTrigger>
-              <AccordionContent>
-                {option.map((opt, index) => (
-                  <Field key={index} orientation="horizontal">
-                    <Checkbox
-                      id={`${opt.value}`}
-                      name={`filter-category-${opt.value}`}
-                      className=""
-                      onCheckedChange={(checked) =>
-                        onFilterChange(groupName, opt.value, checked === true)
-                      }
-                    />
-                    <FieldLabel
-                      htmlFor={`filter-category-${opt.value}`}
-                      className="font-sans"
-                    >
-                      {opt.label}
-                    </FieldLabel>
-                  </Field>
-                ))}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+      <div className="w-full flex relative justify-between items-start">
+        <div className="w-fit relative flex justify-start items-start gap-5">
+          <span className="py-4.5 font-sans text-(--ink1) text-base font-extralight leading-none tracking-[0.06em]">
+            Filter By:
+          </span>
+          <Accordion multiple className="w-fit">
+            {Object.entries(filterOptions).map(([groupName, option]) => (
+              <AccordionItem key={groupName} value={groupName}>
+                <AccordionTrigger>{groupName}</AccordionTrigger>
+                <AccordionContent>
+                  {option.map((opt, index) => (
+                    <Field key={index} orientation="horizontal">
+                      <Checkbox
+                        id={`${opt.value}`}
+                        name={`filter-category-${opt.value}`}
+                        className=""
+                        onCheckedChange={(checked) =>
+                          onFilterChange(groupName, opt.value, checked === true)
+                        }
+                      />
+                      <FieldLabel
+                        htmlFor={`filter-category-${opt.value}`}
+                        className="font-sans"
+                      >
+                        {opt.label}
+                      </FieldLabel>
+                    </Field>
+                  ))}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
         <div className="flex justify-between items-center gap-8">
           <span className="font-mono text-base font-extralight tracking-[0.06em]">
             {products.length} products
