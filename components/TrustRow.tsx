@@ -3,11 +3,11 @@ import Container from "./Container";
 export default function TrustRow() {
   return (
     <Container>
-      <section className="py-[80px]">
+      <section className="py-20">
         <h4 className="font-sans text-[14px] text-center mb-8 uppercase text-(--stone1) tracking-[0.15em]">
           Why keep with Trovely
         </h4>
-        <div className="grid grid-cols-4 gap-[30px]">
+        <div className="grid grid-cols-4 gap-7.5">
           <div className="border-t-[0.5px] border-(--stone3) pt-8">
             <div className="flex flex-col justify-start items-start gap-2">
               <span className="font-mono uppercase text-(--ochre) text-xs tracking-[0.15em]">
