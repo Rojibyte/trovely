@@ -1,22 +1,15 @@
 import Container from "@/components/Container";
 import ProductGrid from "./ProductGrid";
-import { prisma } from "@/lib/prisma";
 import { getFilterOptions } from "@/lib/filterOptions";
+import getProducts from "@/lib/getProducts";
 
 export default async function Products() {
-  const products = await prisma.product.findMany();
-  const serializedProducts = products.map((product) => ({
-    ...product,
-    price: Number(product.price),
-  }));
+  const products = await getProducts();
   const filterOptions = getFilterOptions(products);
   return (
     <Container>
       <section className="py-20">
-        <ProductGrid
-          products={serializedProducts}
-          filterOptions={filterOptions}
-        />
+        <ProductGrid products={products} filterOptions={filterOptions} />
       </section>
     </Container>
   );
