@@ -10,9 +10,9 @@ export default function Header() {
         </h1>
         <nav className="flex justify-evenly items-center gap-10">
           <Link href="/shop">Shop</Link>
-          <a href="http://">About</a>
-          <a href="http://">Contact</a>
-          <button>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+          {/* <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -45,7 +45,7 @@ export default function Header() {
               <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
               <circle cx="12" cy="7" r="4"></circle>
             </svg>
-          </button>
+          </button> */}
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"

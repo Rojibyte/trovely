@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section className="border-y border-(--stone3)">
@@ -9,9 +11,9 @@ export default function Hero() {
             A small, considered catalog of objects for the home, they are
             sourced, catalogued, and kept as they were meant to be.
           </p>
-          <a href="#" className="primaryButton">
+          <Link href="/shop" className="primaryButton">
             Browse the collection
-          </a>
+          </Link>
         </div>
         <div className="bg-(--stone3)" />
       </div>

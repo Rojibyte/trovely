@@ -15,6 +15,7 @@ const productsData = [
     price: 58.0,
     category: "CERAMICS",
     imageUrl: "/placeholder.jpg",
+    imageUrls: ["", "", ""],
   },
   {
     indexNumber: "No. 002",

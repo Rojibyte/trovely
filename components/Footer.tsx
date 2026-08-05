@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Container from "./Container";
 
 export default function Footer() {
@@ -9,9 +10,9 @@ export default function Footer() {
             Trovely
           </h1>
           <nav className="flex justify-evenly items-center gap-10">
-            <a href="http://">Shop</a>
-            <a href="http://">About</a>
-            <a href="http://">Contact</a>
+            <Link href="/shop">Shop</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
           </nav>
           <div className="flex justify-between items-center gap-4">
             <a href="http://">

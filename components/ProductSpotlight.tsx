@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function ProductSpotlight() {
   return (
     <section className="border-y border-(--stone3)">
@@ -13,9 +15,9 @@ export default function ProductSpotlight() {
             from a single stoneware body, each pitcher carries the maker&apos;s
             thumbprint at the base.
           </p>
-          <a href="#" className="primaryButton">
+          <Link href="/shop" className="primaryButton">
             View this piece
-          </a>
+          </Link>
         </div>
       </div>
     </section>
