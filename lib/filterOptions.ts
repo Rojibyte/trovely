@@ -1,6 +1,6 @@
-import { Product } from "./generated/prisma/client";
+import { Products } from "./getProducts";
 
-export function getFilterOptions(products: Product[]) {
+export function getFilterOptions(products: Products) {
   return {
     Category: [...new Set(products.map((p) => p.category))].map((category) => ({
       label: category.charAt(0).toUpperCase() + category.slice(1).toLowerCase(),

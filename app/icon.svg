@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bark Ink field -->
+  <rect x="0" y="0" width="64" height="64" rx="10" fill="#2B2620"/>
+
+  <!-- Monogram T, drawn as a path (flat cap, flared/tapered stem
+       echoes Fraunces' high-contrast serif character) so it renders
+       identically everywhere instead of depending on a system font -->
+  <path fill="#F2ECE1"
+        d="M13,13 L51,13 L51,20 L13,20 Z
+           M27,20 L37,20 L40,50 L24,50 Z"/>
+</svg>

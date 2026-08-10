@@ -14,7 +14,11 @@ const productsData = [
       "Thrown in small batches from a single stoneware body, each pitcher carries the maker's thumbprint at the base. Holds roughly 1.5 litres, enough for a full pot of tea or a bedside carafe.",
     price: 58.0,
     category: "CERAMICS",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/8622887/pexels-photo-8622887.jpeg",
+      "https://images.pexels.com/photos/8622880/pexels-photo-8622880.jpeg",
+      "https://images.pexels.com/photos/8622885/pexels-photo-8622885.jpeg",
+    ],
   },
   {
     indexNumber: "No. 002",
@@ -25,7 +29,11 @@ const productsData = [
       "No two cups glaze identically; the speckling is a firing effect, not a pattern.",
     price: 34.0,
     category: "CERAMICS",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/4830748/pexels-photo-4830748.jpeg",
+      "https://images.pexels.com/photos/4830752/pexels-photo-4830752.jpeg",
+      "https://images.pexels.com/photos/4830750/pexels-photo-4830750.jpeg",
+    ],
   },
   {
     indexNumber: "No. 003",
@@ -36,7 +44,11 @@ const productsData = [
       "Fired in a wood kiln, so the glaze pools differently on every piece.",
     price: 72.0,
     category: "CERAMICS",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/11691548/pexels-photo-11691548.jpeg",
+      "https://images.pexels.com/photos/11691547/pexels-photo-11691547.jpeg",
+      "https://images.pexels.com/photos/11691546/pexels-photo-11691546.jpeg",
+    ],
   },
   {
     indexNumber: "No. 004",
@@ -47,7 +59,11 @@ const productsData = [
       "A single stem or a bare tabletop, this one prefers restraint.",
     price: 46.0,
     category: "CERAMICS",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/20130605/pexels-photo-20130605.jpeg",
+      "https://images.pexels.com/photos/20130584/pexels-photo-20130584.jpeg",
+      "https://images.pexels.com/photos/20130582/pexels-photo-20130582.jpeg",
+    ],
   },
 
   // Textiles
@@ -59,7 +75,11 @@ const productsData = [
     description: "Undyed jute, hand-loomed on a backstrap loom.",
     price: 48.0,
     category: "TEXTILES",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/6654139/pexels-photo-6654139.jpeg",
+      "https://images.pexels.com/photos/6654128/pexels-photo-6654128.jpeg",
+      "https://images.pexels.com/photos/6654124/pexels-photo-6654124.jpeg",
+    ],
   },
   {
     indexNumber: "No. 022",
@@ -69,7 +89,11 @@ const productsData = [
     description: "Softens with every wash; no two runners fade quite the same.",
     price: 54.0,
     category: "TEXTILES",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/6957939/pexels-photo-6957939.jpeg",
+      "https://images.pexels.com/photos/6957897/pexels-photo-6957897.jpeg",
+      "https://images.pexels.com/photos/6957779/pexels-photo-6957779.jpeg",
+    ],
   },
   {
     indexNumber: "No. 023",
@@ -80,7 +104,11 @@ const productsData = [
       "Left unfinished at the edges on purpose, it's meant to fray a little.",
     price: 86.0,
     category: "TEXTILES",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/27515153/pexels-photo-27515153.jpeg",
+      "https://images.pexels.com/photos/27515156/pexels-photo-27515156.jpeg",
+      "https://images.pexels.com/photos/27515152/pexels-photo-27515152.jpeg",
+    ],
   },
   {
     indexNumber: "No. 024",
@@ -91,7 +119,11 @@ const productsData = [
       "Slightly irregular hems, a mark of hand-loom weaving, not a flaw.",
     price: 32.0,
     category: "TEXTILES",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/5424920/pexels-photo-5424920.jpeg",
+      "https://images.pexels.com/photos/5424905/pexels-photo-5424905.jpeg",
+      "https://images.pexels.com/photos/5424913/pexels-photo-5424913.jpeg",
+    ],
   },
 
   // Home
@@ -103,7 +135,11 @@ const productsData = [
     description: "Each grain pattern is unique to the tree it came from.",
     price: 36.0,
     category: "HOME",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/6569019/pexels-photo-6569019.jpeg",
+      "https://images.pexels.com/photos/6569304/pexels-photo-6569304.jpeg",
+      "https://images.pexels.com/photos/6569148/pexels-photo-6569148.jpeg",
+    ],
   },
   {
     indexNumber: "No. 042",
@@ -113,7 +149,10 @@ const productsData = [
     description: "Ages into a warmer patina the more it's used.",
     price: 28.0,
     category: "HOME",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/15380977/pexels-photo-15380977.jpeg",
+      "https://images.pexels.com/photos/15380985/pexels-photo-15380985.jpeg",
+    ],
   },
   {
     indexNumber: "No. 043",
@@ -123,7 +162,11 @@ const productsData = [
     description: "Sturdy enough for firewood, soft enough for throws.",
     price: 42.0,
     category: "HOME",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/6654115/pexels-photo-6654115.jpeg",
+      "https://images.pexels.com/photos/13911403/pexels-photo-13911403.jpeg",
+      "https://images.pexels.com/photos/6653905/pexels-photo-6653905.jpeg",
+    ],
   },
   {
     indexNumber: "No. 044",
@@ -133,7 +176,10 @@ const productsData = [
     description: "One edge left with natural bark for texture and contrast.",
     price: 52.0,
     category: "HOME",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/1765012/pexels-photo-1765012.jpeg",
+      "https://images.pexels.com/photos/1765005/pexels-photo-1765005.jpeg",
+    ],
   },
 
   // Garden
@@ -146,7 +192,11 @@ const productsData = [
       "Porous by design, better drainage, and it weathers beautifully outdoors.",
     price: 29.0,
     category: "GARDEN",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/9707251/pexels-photo-9707251.jpeg",
+      "https://images.pexels.com/photos/9707237/pexels-photo-9707237.jpeg",
+      "https://images.pexels.com/photos/9707247/pexels-photo-9707247.jpeg",
+    ],
   },
   {
     indexNumber: "No. 062",
@@ -157,7 +207,11 @@ const productsData = [
       "Heavier than it looks; built to outlast the plants it waters.",
     price: 64.0,
     category: "GARDEN",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/4594024/pexels-photo-4594024.jpeg",
+      "https://images.pexels.com/photos/4622067/pexels-photo-4622067.jpeg",
+      "https://images.pexels.com/photos/4750273/pexels-photo-4750273.jpeg",
+    ],
   },
   {
     indexNumber: "No. 063",
@@ -167,7 +221,11 @@ const productsData = [
     description: "Hand-knotted, holds pots up to 8 inches wide.",
     price: 24.0,
     category: "GARDEN",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/5825548/pexels-photo-5825548.jpeg",
+      "https://images.pexels.com/photos/5825558/pexels-photo-5825558.jpeg",
+      "https://images.pexels.com/photos/5825559/pexels-photo-5825559.jpeg",
+    ],
   },
   {
     indexNumber: "No. 064",
@@ -177,7 +235,11 @@ const productsData = [
     description: "Copper resists rust and, some gardeners swear, deters slugs.",
     price: 22.0,
     category: "GARDEN",
-    imageUrl: "/placeholder.jpg",
+    imageUrls: [
+      "https://images.pexels.com/photos/6231826/pexels-photo-6231826.jpeg",
+      "https://images.pexels.com/photos/6231828/pexels-photo-6231828.jpeg",
+      "https://images.pexels.com/photos/6231829/pexels-photo-6231829.jpeg",
+    ],
   },
 ] as const;
 
@@ -186,6 +248,7 @@ async function main() {
     data: productsData.map((product) => ({
       ...product,
       slug: slugify(product.name),
+      imageUrls: [...product.imageUrls],
     })),
   });
 }
