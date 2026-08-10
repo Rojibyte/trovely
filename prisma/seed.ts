@@ -248,6 +248,7 @@ async function main() {
     data: productsData.map((product) => ({
       ...product,
       slug: slugify(product.name),
+      imageUrls: [...product.imageUrls],
     })),
   });
 }

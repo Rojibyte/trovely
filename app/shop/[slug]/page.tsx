@@ -58,7 +58,13 @@ export default async function ProductPage({
               {product.description}
             </p>
 
-            <AddToCart productId={product.id} />
+            <AddToCart
+              productId={product.id}
+              slug={product.slug}
+              name={product.name}
+              price={product.price}
+              imageUrl={product.imageUrls[0]}
+            />
 
             <Accordion multiple className="flex-col mt-4">
               <AccordionItem value="materials">
