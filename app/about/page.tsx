@@ -1,13 +1,15 @@
 import BrowseCollection from "@/components/BrowseCollection";
+import DurabilityPhilosophy from "@/components/DurabilityPhilosophy";
 import Founder from "@/components/Founder";
-import HeroAbout from "@/components/HeroAbout";
-import History from "@/components/History";
+import AboutHero from "@/components/AboutHero";
+import SourcingPhilosophy from "@/components/SourcingPhilosophy";
 
 export default function About() {
   return (
     <>
-      <HeroAbout />
-      <History />
+      <AboutHero />
+      <SourcingPhilosophy />
+      <DurabilityPhilosophy />
       <Founder />
       <BrowseCollection />
     </>

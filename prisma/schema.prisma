@@ -30,7 +30,6 @@ model Product {
   description String
   price       Decimal  @db.Decimal(10, 2)
   category    Category
-  imageUrl    String
   imageUrls   String[]
   inStock     Boolean  @default(true)
   createdAt   DateTime @default(now())

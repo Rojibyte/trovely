@@ -1,21 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { useCartStore } from "@/lib/store/cartStore";
 
 interface AddToCartProps {
   productId: string;
+  slug: string;
+  name: string;
+  price: number;
+  imageUrl: string;
 }
 
-export default function AddToCart({ productId }: AddToCartProps) {
+export default function AddToCart({
+  productId,
+  slug,
+  name,
+  price,
+  imageUrl,
+}: AddToCartProps) {
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const addItem = useCartStore((state) => state.addItem);
 
   const decrement = () => setQuantity((q) => Math.max(1, q - 1));
   const increment = () => setQuantity((q) => q + 1);
 
   const handleAddToCart = () => {
-    // Simulated cart — no live cart/context yet.
-    console.log(`Added ${quantity} of product ${productId} to cart`);
+    addItem({ id: productId, slug, name, price, imageUrl }, quantity);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   };
@@ -43,7 +54,7 @@ export default function AddToCart({ productId }: AddToCartProps) {
 
         <button
           onClick={handleAddToCart}
-          className="flex-1 rounded-2xl bg-(--action) text-background font-sans text-sm font-medium py-4 cursor-pointer transition-all duration-350 ease-out hover:opacity-90"
+          className="flex-1 rounded-2xl bg-(--rust) text-background font-sans text-sm font-medium py-4 cursor-pointer transition-all duration-350 ease-out hover:opacity-90"
         >
           {added ? "Added ✓" : "Add to Cart"}
         </button>

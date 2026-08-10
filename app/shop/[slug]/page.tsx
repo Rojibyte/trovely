@@ -10,6 +10,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
+import ProductGallery from "@/components/ProductGallery";
 
 export default async function ProductPage({
   params,
@@ -24,7 +25,7 @@ export default async function ProductPage({
     <Container>
       <section className="py-12">
         {/* Breadcrumb */}
-        <div className="text-sm text-(--stone1) font-sans mb-8">
+        <div className="text-sm text-(--stone1) font-extralight tracking-[0.06em] mb-8">
           <Link href="/shop">Shop</Link>
           {" / "}
           <span>{capitalize(product.category)}</span>
@@ -34,21 +35,11 @@ export default async function ProductPage({
 
         {/* Top section: gallery + info */}
         <div className="flex gap-12 items-start">
-          <div className="flex-1">
-            <div className="relative bg-(--stone4) border border-(--stone2) w-full h-125">
-              <span className="absolute top-3 left-3 font-mono uppercase text-(--ochre) text-xs tracking-[0.15em]">
-                {product.indexNumber}
-              </span>
-            </div>
-            <div className="flex gap-3 mt-4">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="w-24 h-24 bg-(--stone4) border border-(--stone2) cursor-pointer"
-                />
-              ))}
-            </div>
-          </div>
+          <ProductGallery
+            images={[...product.imageUrls]}
+            indexNumber={product.indexNumber}
+            productName={product.name}
+          />
 
           <div className="flex-1 flex flex-col gap-4">
             <span className="font-mono uppercase text-(--ochre) text-xs tracking-[0.15em]">
