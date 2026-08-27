@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Product } from "@/lib/generated/prisma/client";
 import { useCartStore } from "@/lib/store/cartStore";
 import Link from "next/link";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,9 +71,11 @@ export default function ProductCard({ products }: ProductCardProps) {
         className="flex flex-col justify-center items-start w-full gap-4"
       >
         <div className="relative bg-(--stone4) border border-(--stone2) w-full h-65 overflow-hidden">
-          <img
+          <Image
             src={products.imageUrls[0]}
             alt={products.name}
+            width={303}
+            height={258}
             onLoad={() => setImageLoaded(true)}
             className={`w-full h-full object-cover transition-opacity duration-500 ease-out ${
               imageLoaded ? "opacity-100" : "opacity-0"
@@ -94,7 +97,7 @@ export default function ProductCard({ products }: ProductCardProps) {
       </Link>
       <button
         onClick={handleAddToCart}
-        className="w-full rounded-2xl border border-(--stone3) bg-background font-sans text-sm font-medium py-4 cursor-pointer transition-all duration-350 ease-out hover:bg-(--ink1) hover:text-background"
+        className="w-full rounded-2xl border border-(--stone3) bg-background font-sans text-sm font-medium py-4 cursor-pointer transition-all duration-350 ease-out hover:bg-(--action) hover:text-background"
       >
         {added ? "Added ✓" : "Add to Cart"}
       </button>

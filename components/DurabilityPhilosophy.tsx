@@ -1,11 +1,13 @@
+import Image from "next/image";
 import FadeIn from "./FadeIn";
+import DurabilityBanner from "@/public/durability-img.jpg";
 
 export default function DurabilityPhilosophy() {
   return (
     <>
       <section className="">
         <div className="grid grid-cols-2">
-          <div className="flex flex-col justify-start py-80 pr-20 ml-auto max-w-180 gap-9">
+          <div className="flex flex-col justify-center pr-20 ml-auto max-w-180 gap-9">
             <FadeIn delay={0}>
               <span className="subTitle">How it&apos;s kept</span>
             </FadeIn>
@@ -21,7 +23,11 @@ export default function DurabilityPhilosophy() {
               </p>
             </FadeIn>
           </div>
-          <div className="bg-center bg-cover bg-[url('https://images.pexels.com/photos/3094041/pexels-photo-3094041.jpeg')]" />
+          <Image
+            alt="Durability Banner"
+            src={DurabilityBanner}
+            style={{ width: "100%", height: "800px" }}
+          />
         </div>
       </section>
     </>

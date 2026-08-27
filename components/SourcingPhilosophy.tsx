@@ -1,12 +1,18 @@
+import Image from "next/image";
 import FadeIn from "./FadeIn";
+import SourcingBanner from "@/public/sourcing-img.jpg";
 
 export default function SourcingPhilosophy() {
   return (
     <>
       <section className="">
         <div className="grid grid-cols-2">
-          <div className="bg-center bg-cover bg-[url('https://images.pexels.com/photos/10111544/pexels-photo-10111544.jpeg')]" />
-          <div className="flex flex-col justify-center items-start py-80 pl-20 mr-auto max-w-180 gap-9">
+          <Image
+            alt="SourcingPhilosophy Banner"
+            src={SourcingBanner}
+            style={{ width: "100%", height: "800px" }}
+          />
+          <div className="flex flex-col justify-center items-start pl-20 mr-auto max-w-180 gap-9">
             <FadeIn delay={0}>
               <span className="subTitle text-left">Where it starts</span>
             </FadeIn>

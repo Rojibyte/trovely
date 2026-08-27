@@ -23,7 +23,7 @@ export default function CartPage() {
           </p>
           <Link
             href="/shop"
-            className="rounded-2xl bg-(--rust) text-background font-sans text-sm font-medium px-6 py-4 transition-all duration-350 ease-out hover:opacity-90"
+            className="rounded-2xl bg-(--action) text-background font-sans text-sm font-medium px-6 py-4 transition-all duration-350 ease-out hover:opacity-90"
           >
             Browse the Collection
           </Link>

@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Container from "./Container";
 import FadeIn from "./FadeIn";
+import Image from "next/image";
+import CeramicsImg from "@/public/ceramics-img.jpg";
+import TextilesImg from "@/public/textiles-img.jpg";
+import HomeImg from "@/public/home-img.jpg";
+import GardenImg from "@/public/garden-img.jpg";
 
 export default function FeatureCollections() {
   return (
@@ -15,7 +20,11 @@ export default function FeatureCollections() {
           <FadeIn delay={0}>
             <Link href="/shop">
               <div className="bg-(--stone4) border-[0.5px] border-(--stone2)">
-                <div className="h-80 bg-center bg-cover bg-[url('https://images.pexels.com/photos/30654318/pexels-photo-30654318.jpeg')]"></div>
+                <Image
+                  alt="ceramic collection"
+                  src={CeramicsImg}
+                  className="h-80 object-cover"
+                />
                 <div className="flex justify-center items-center py-6 font-heading text-2xl border-t border-(--stone2)">
                   Ceramics
                 </div>
@@ -25,7 +34,11 @@ export default function FeatureCollections() {
           <FadeIn delay={0.1}>
             <Link href="/shop">
               <div className="bg-(--stone4) border-[0.5px] border-(--stone2)">
-                <div className="h-80 bg-center bg-cover bg-[url('https://images.pexels.com/photos/30002543/pexels-photo-30002543.jpeg')]"></div>
+                <Image
+                  alt="textiles collection"
+                  src={TextilesImg}
+                  className="h-80 object-cover"
+                />
                 <div className="flex justify-center items-center py-6 font-heading text-2xl border-t border-(--stone2)">
                   Textiles
                 </div>
@@ -35,7 +48,11 @@ export default function FeatureCollections() {
           <FadeIn delay={0.2}>
             <Link href="/shop">
               <div className="bg-(--stone4) border-[0.5px] border-(--stone2)">
-                <div className="h-80 bg-center bg-cover bg-[url('https://images.pexels.com/photos/5425129/pexels-photo-5425129.jpeg')]"></div>
+                <Image
+                  alt="home collection"
+                  src={HomeImg}
+                  className="h-80 object-cover"
+                />
                 <div className="flex justify-center items-center py-6 font-heading text-2xl border-t border-(--stone2)">
                   Home
                 </div>
@@ -45,7 +62,11 @@ export default function FeatureCollections() {
           <FadeIn delay={0.3}>
             <Link href="/shop">
               <div className="bg-(--stone4) border-[0.5px] border-(--stone2)">
-                <div className="h-80 bg-center bg-cover bg-[url('https://images.pexels.com/photos/22610760/pexels-photo-22610760.jpeg')]"></div>
+                <Image
+                  alt="garden collection"
+                  src={GardenImg}
+                  className="h-80 object-cover"
+                />
                 <div className="flex justify-center items-center py-6 font-heading text-2xl border-t border-(--stone2)">
                   Garden
                 </div>

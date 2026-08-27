@@ -1,11 +1,13 @@
 import Link from "next/link";
 import FadeIn from "./FadeIn";
+import spotlightBanner from "@/public/favourite-banner.jpg";
+import Image from "next/image";
 
 export default function ProductSpotlight() {
   return (
     <section className="border-y border-(--stone3)">
       <div className="grid grid-cols-2">
-        <div className="bg-bottom-left bg-cover bg-[url('https://images.pexels.com/photos/6962809/pexels-photo-6962809.jpeg')]" />
+        <Image alt="favourites banner" src={spotlightBanner} />
         <div className="flex flex-col justify-center items-end py-20 pl-16.25 mr-auto max-w-180 gap-9">
           <FadeIn delay={0}>
             <span className="subTitle text-right">Catalog favourite</span>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 interface ProductGalleryProps {
@@ -23,9 +24,12 @@ export default function ProductGallery({
   return (
     <div className="flex-1">
       <div className="relative bg-(--stone4) border border-(--stone2) w-full h-125 overflow-hidden">
-        <img
+        <Image
           src={images[activeIndex]}
           alt={`${productName} — image ${activeIndex + 1}`}
+          priority
+          width={630}
+          height={500}
           onLoad={() => markLoaded(activeIndex)}
           className={`w-full h-full object-cover transition-opacity duration-500 ease-out ${
             loadedImages.has(activeIndex) ? "opacity-100" : "opacity-0"
@@ -48,9 +52,11 @@ export default function ProductGallery({
             }`}
             aria-label={`View ${productName} image ${index + 1}`}
           >
-            <img
+            <Image
               src={image}
               alt=""
+              width={100}
+              height={100}
               onLoad={() => markLoaded(index)}
               className={`w-full h-full object-cover transition-opacity duration-500 ease-out ${
                 loadedImages.has(index) ? "opacity-100" : "opacity-0"

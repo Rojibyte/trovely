@@ -16,7 +16,7 @@ export default function AboutHero() {
               </h1>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <p className="max-w-[650px]">
+              <p className="max-w-162.5">
                 Trovely started as a personal list of objects worth keeping.
                 It&apos;s grown slowly, one maker at a time, and stayed small on
                 purpose.
