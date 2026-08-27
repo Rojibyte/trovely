@@ -1,11 +1,13 @@
 import Link from "next/link";
 import FadeIn from "./FadeIn";
+import Image from "next/image";
+import HeroBanner from "@/public/hero-banner.jpg";
 
 export default function Hero() {
   return (
     <section className="border-b border-(--stone3)">
       <div className="grid grid-cols-2">
-        <div className="flex flex-col justify-start py-20 pl-16.25 pr-8 ml-auto max-w-180 gap-9">
+        <div className="flex flex-col justify-center py-20 pl-16.25 pr-8 ml-auto max-w-180 gap-9">
           <FadeIn delay={0}>
             <span className="subTitle">New arrivals — spring catalog</span>
           </FadeIn>
@@ -24,7 +26,11 @@ export default function Hero() {
             </Link>
           </FadeIn>
         </div>
-        <div className="bg-center bg-cover bg-[url('https://images.pexels.com/photos/30885859/pexels-photo-30885859.jpeg')]" />
+        <Image
+          alt="artistic-aerial-view-of-unfinished-ceramic-pottery"
+          src={HeroBanner}
+          priority
+        />
       </div>
     </section>
   );

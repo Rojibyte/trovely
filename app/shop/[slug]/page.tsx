@@ -51,7 +51,7 @@ export default async function ProductPage({
             <span className="subTitle uppercase">
               {product.material} · {product.origin}
             </span>
-            <span className="font-mono text-2xl text-(--ink1) tracking-[0.6em]">
+            <span className="font-mono text-2xl text-(--ink1) tracking-widest">
               ${product.price.toFixed(2)}
             </span>
             <p className="font-sans text-(--ink1) leading-relaxed">
@@ -67,14 +67,18 @@ export default async function ProductPage({
             />
 
             <Accordion multiple className="flex-col mt-4">
-              <AccordionItem value="materials">
+              <AccordionItem
+                value="materials"
+                className="px-0 border-b border-(--stone3)"
+              >
                 <AccordionTrigger>Materials & Care</AccordionTrigger>
                 <AccordionContent>
                   {product.material} — spot clean only, avoid prolonged moisture
                   exposure.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="shipping">
+              <AccordionItem value="shipping" 
+                className="px-0 border-b border-(--stone3)">
                 <AccordionTrigger>Shipping & returns</AccordionTrigger>
                 <AccordionContent>
                   Ships within 3 business days. Returns accepted within 14 days

@@ -190,4 +190,10 @@ p {
   background-color: var(--action);
   width: fit-content;
   border-radius: var(--radius);
+  transition: all;
+  transition-duration: 0.2s;
+}
+
+.primaryButton:hover {
+  background-color: var(--ink1);
 }
