@@ -51,7 +51,7 @@ export default async function ProductPage({
             <span className="subTitle uppercase">
               {product.material} · {product.origin}
             </span>
-            <span className="font-mono text-2xl text-(--ink1) tracking-widest">
+            <span className="font-mono text-2xl text-(--ink1) tracking-[0.6em]">
               ${product.price.toFixed(2)}
             </span>
             <p className="font-sans text-(--ink1) leading-relaxed">
