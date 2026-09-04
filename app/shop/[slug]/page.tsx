@@ -77,8 +77,10 @@ export default async function ProductPage({
                   exposure.
                 </AccordionContent>
               </AccordionItem>
-              <AccordionItem value="shipping" 
-                className="px-0 border-b border-(--stone3)">
+              <AccordionItem
+                value="shipping"
+                className="px-0 border-b border-(--stone3)"
+              >
                 <AccordionTrigger>Shipping & returns</AccordionTrigger>
                 <AccordionContent>
                   Ships within 3 business days. Returns accepted within 14 days

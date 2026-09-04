@@ -2,13 +2,25 @@
 
 import Link from "next/link";
 import Container from "@/components/Container";
+import { Spinner } from "@/components/ui/spinner";
 import { useCartStore } from "@/lib/store/cartStore";
 
 export default function CartPage() {
   const items = useCartStore((state) => state.items);
+  const hasHydrated = useCartStore((state) => state.hasHydrated);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const removeItem = useCartStore((state) => state.removeItem);
   const totalPrice = useCartStore((state) => state.totalPrice());
+
+  if (!hasHydrated) {
+    return (
+      <Container>
+        <section className="py-24 flex items-center justify-center">
+          <Spinner className="size-20" />
+        </section>
+      </Container>
+    );
+  }
 
   if (items.length === 0) {
     return (

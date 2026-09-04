@@ -18,12 +18,18 @@ interface CartState {
   clearCart: () => void;
   totalItems: () => number;
   totalPrice: () => number;
+  hasHydrated: boolean;
+  setHasHydrated: (state: boolean) => void;
 }
 
 export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
+
+      hasHydrated: false,
+
+      setHasHydrated: (state) => set({ hasHydrated: state }),
 
       addItem: (item, quantity) => {
         set((state) => {
@@ -66,6 +72,6 @@ export const useCartStore = create<CartState>()(
       totalPrice: () =>
         get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
     }),
-    { name: "trovely-cart" },
+    { name: "trovely-cart", skipHydration: true },
   ),
 );
