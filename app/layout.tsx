@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from "@clerk/nextjs";
+import { CartHydration } from "./providers/CartHydration";
 
 const jetBrains = JetBrains_Mono({
   subsets: ["latin"],
@@ -30,6 +31,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <ClerkProvider>
+          <CartHydration />
           <Header />
           {children}
           <Footer />

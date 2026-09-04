@@ -1,16 +1,19 @@
+"use client";
+
 import {
   Popover,
   PopoverContent,
-  PopoverDescription,
-  PopoverHeader,
-  PopoverTitle,
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Container from "./Container";
 import Link from "next/link";
+import { useCartStore } from "@/lib/store/cartStore";
 
 export default function Header() {
+  const hasHydrated = useCartStore((state) => state.hasHydrated);
+  const items = useCartStore((state) => state.items);
+
   return (
     <section className="border-b border-(--stone3)">
       <Container>
@@ -56,7 +59,7 @@ export default function Header() {
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
               </svg>
             </button> */}
-            <Link href="/cart">
+            <Link href="/cart" className="relative">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -73,6 +76,11 @@ export default function Header() {
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <path d="M16 10a4 4 0 0 1-8 0"></path>
               </svg>
+              {hasHydrated && (
+                <div className="flex absolute justify-center items-center -top-2.5 -right-2.5 pr-0.5 size-5 rounded-full text-center text-xs text-background bg-(--ink1)">
+                  {items.length}
+                </div>
+              )}
             </Link>
             <Show when="signed-out">
               <Popover>
