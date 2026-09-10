@@ -12,6 +12,16 @@ export default function CartPage() {
   const removeItem = useCartStore((state) => state.removeItem);
   const totalPrice = useCartStore((state) => state.totalPrice());
 
+  const handleCheckout = async () => {
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      body: JSON.stringify({
+        items: items.map((item) => ({ id: item.id, quantity: item.quantity })),
+      }),
+    });
+    const data = await res.json();
+  };
+
   if (!hasHydrated) {
     return (
       <Container>

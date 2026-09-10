@@ -39,3 +39,12 @@ model Product {
   updatedAt   DateTime @updatedAt
   slug        String   @unique
 }
+
+model Order {
+  id              String   @id @default(cuid())
+  paymentIntentId String   @unique
+  status          String
+  totalAmount     Decimal
+  items           Json
+  createdAt       DateTime @default(now())
+}

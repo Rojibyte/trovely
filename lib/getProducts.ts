@@ -25,6 +25,16 @@ export async function getProductBySlug(slug: string) {
   }
 }
 
+export async function getProductsByIds(ids: string[]) {
+  const products = await prisma.product.findMany({
+    where: { id: { in: ids } },
+  });
+  return products.map((product) => ({
+    ...product,
+    price: Number(product.price),
+  }));
+}
+
 export async function getRelatedProducts(
   category: Category,
   excludeSlug: string,
